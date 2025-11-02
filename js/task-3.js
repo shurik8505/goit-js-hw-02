@@ -1,21 +1,20 @@
-function filterArray(numbers, value) {
-  
-  const filteredNumbers = [];
+function checkForSpam(message) {
+  let result;
+  const messageToLower = message.toLowerCase();
 
-  for (let i = 0; i < numbers.length; i += 1) {
-    const number = numbers[i];
-
-    if (number > value) {
-      filteredNumbers.push(number);
-    }
+  if (messageToLower.includes('spam') || messageToLower.includes('sale')) {
+    result = true;
+  } else {
+    result = false;
   }
 
-  return filteredNumbers;
-  
+  return result;
 }
 
-console.log(filterArray([1, 2, 3, 4, 5], 3));
-console.log(filterArray([1, 2, 3, 4, 5], 4));
-console.log(filterArray([1, 2, 3, 4, 5], 5));
-console.log(filterArray([12, 24, 8, 41, 76], 38));
-console.log(filterArray([12, 24, 8, 41, 76], 20)); 
+console.log(checkForSpam("Latest technology news")); // false
+console.log(checkForSpam("JavaScript weekly newsletter")); // false
+console.log(checkForSpam("Get best sale offers now!")); // true
+console.log(checkForSpam("Amazing SalE, only tonight!")); // true
+console.log(checkForSpam("Trust me, this is not a spam message")); // true
+console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
+console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
